@@ -2,12 +2,12 @@ package vendingmachine;
 
 public class Product {
     private final String name;
-    private final int amount;
+    private final int price;
     private final int quantity;
 
-    Product(String name, int amount, int quantity) {
+    Product(String name, int price, int quantity) {
         this.name = name;
-        this.amount = amount;
+        this.price = price;
         this.quantity = quantity;
     }
 }
