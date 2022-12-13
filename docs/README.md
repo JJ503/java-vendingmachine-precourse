@@ -119,8 +119,8 @@
    - [x]  `InputValidation` → 상품 정보 입력 유휴성 검사
 - [x]  투입 금액 입력
    - [x]  `InputValidation` → 돈 금액 입력 유효성 검사
-- [ ]  구매 상품명 입력
-   - [ ]  `InputValidation` → 상품명 입력 유효성 검사
+- [x]  구매 상품명 입력
+   - [x]  `InputValidation` → 상품명 입력 유효성 검사
 
 ### **OutputView**
 
