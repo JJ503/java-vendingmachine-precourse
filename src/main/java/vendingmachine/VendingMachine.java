@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VendingMachine {
+    private static final String COIN_MESSAGE_FORMAT= "%d원 - %d개\n";
     private final Map<Coin, Integer> vendingMachineCoins;
 
     VendingMachine(int amount) {
@@ -35,5 +36,15 @@ public class VendingMachine {
         }
 
         return amount;
+    }
+
+    public String getVendingMachineCoins() {
+        StringBuilder coinsMessage = new StringBuilder();
+        for (Coin coin : vendingMachineCoins.keySet()) {
+            coinsMessage.append(String.format(COIN_MESSAGE_FORMAT,
+                    coin.getAmount(),vendingMachineCoins.get(coin)));
+        }
+
+        return coinsMessage.toString();
     }
 }
