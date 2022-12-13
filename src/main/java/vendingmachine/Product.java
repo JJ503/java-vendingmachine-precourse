@@ -1,6 +1,8 @@
 package vendingmachine;
 
 public class Product {
+    private static final int ZERO = 0;
+
     private final String name;
     private final int price;
     private final int quantity;
@@ -11,7 +13,15 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public boolean isMatchName(String name) {
+    public boolean canBePurchase(String name) {
+        return isMatchName(name) && isExistQuantity();
+    }
+
+    private boolean isMatchName(String name) {
         return this.name.equals(name);
+    }
+
+    private boolean isExistQuantity() {
+        return quantity > ZERO;
     }
 }
