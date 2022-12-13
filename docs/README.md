@@ -98,7 +98,7 @@
 
 > 500 ~ 10원 사이의 값을 저장해둔 enum 파일
 
-- [ ]  금액에 따른 Coin 상수 반환하기
+- [x]  금액에 따른 Coin 상수 반환하기
 
 ### RandomCoinAmount
 
