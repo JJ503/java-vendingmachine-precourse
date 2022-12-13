@@ -114,7 +114,7 @@
 
 - [x]  자판기 보유 금액 입력
    - [x]  `InputValidation` → 돈 금액 입력 유효성 검사
-- [ ]  상품 정보 입력
+- [x]  상품 정보 입력
    - [ ]  `InputValidation` → 상품 정보 입력 유휴성 검사
 - [ ]  투입 금액 입력
    - [ ]  `InputValidation` → 돈 금액 입력 유효성 검사
