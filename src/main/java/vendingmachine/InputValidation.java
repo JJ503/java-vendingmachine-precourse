@@ -10,7 +10,7 @@ public class InputValidation {
 
     public int validateAmount(String checkAmount) {
         isExistValue(checkAmount);
-        int amount = getNumber(checkAmount);
+        int amount = getAmountNumber(checkAmount);
         isDividedBy10(amount);
 
         return amount;
@@ -27,11 +27,11 @@ public class InputValidation {
         }
     }
 
-    private Integer getNumber(String checkValue) {
+    private Integer getAmountNumber(String checkValue) {
         try {
             return Integer.parseInt(checkValue);
         } catch (NumberFormatException numberFormatException) {
-            ExceptionMessage.IS_NOT_NUMBER.throwException();
+            ExceptionMessage.INPUT_AMOUNT_IS_NOT_NUMBER.throwException();
         }
 
         return null;
@@ -48,6 +48,7 @@ public class InputValidation {
         List<Map<String, Object>> productsInforms = new ArrayList<>();
 
         for (String product : products) {
+            product = product.substring(1, product.length() - 1);
             productsInforms.add(isThreeInformation(product));
         }
 
@@ -65,22 +66,29 @@ public class InputValidation {
     }
 
     private Map<String, Object> validateInformation(List<String> information) {
-        validateAmount(information.get(1));
-        validateQuantity(information.get(2));
-
         return new HashMap<String, Object>() {{
             put("name", information.get(0));
-            put("price", information.get(1));
-            put("quantity", information.get(2));
+            put("price", validateAmount(information.get(1)));
+            put("quantity", validateQuantity(information.get(2)));
         }};
     }
 
     private int validateQuantity(String checkQuantity) {
         isExistValue(checkQuantity);
-        int quantity = getNumber(checkQuantity);
+        int quantity = getQuantityNumber(checkQuantity);
         isOverZero(quantity);
 
         return quantity;
+    }
+
+    private Integer getQuantityNumber(String checkValue) {
+        try {
+            return Integer.parseInt(checkValue);
+        } catch (NumberFormatException numberFormatException) {
+            ExceptionMessage.INPUT_QUANTITY_IS_NOT_NUMBER.throwException();
+        }
+
+        return null;
     }
 
     private void isOverZero(int quantity) {
