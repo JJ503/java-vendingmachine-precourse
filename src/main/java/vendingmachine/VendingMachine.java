@@ -28,7 +28,7 @@ public class VendingMachine {
 
     private int createRandomCoin(int amount) {
         Coin randomCoin = Coin.getCoin(RandomCoinAmount.randomCoinAmount());
-        int subtractValue = randomCoin.subtractValue(amount);
+        int subtractValue = amount - randomCoin.getAmount();
         if (subtractValue > 0) {
             vendingMachineCoins.put(randomCoin, vendingMachineCoins.get(randomCoin) + 1);
             return subtractValue;
