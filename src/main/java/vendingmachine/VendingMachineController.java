@@ -5,7 +5,7 @@ public class VendingMachineController {
     OutputView outputView = new OutputView();
 
     public void operateVendingMachine() {
-
+        VendingMachine vendingMachine = new VendingMachine(enterVendingMachineAmount());
     }
 
     private int enterVendingMachineAmount() {
