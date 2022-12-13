@@ -4,14 +4,14 @@ public class InputValidation {
     private static final int UNIT_OF_MONEY = 10;
 
     public int validateAmount(String checkAmount) {
-        isNotExistValue(checkAmount);
+        isExistValue(checkAmount);
         int amount = getNumber(checkAmount);
         isDividedBy10(amount);
 
         return amount;
     }
 
-    private void isNotExistValue(String checkValue) {
+    private void isExistValue(String checkValue) {
         if (checkValue.isEmpty()) {
             ExceptionMessage.ENTER_NOTHING.throwException();
         }
