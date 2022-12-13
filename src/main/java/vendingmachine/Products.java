@@ -10,7 +10,7 @@ public class Products {
         products.add(newProduct);
     }
 
-    public boolean isExistProduct(String productName) {
-        return products.stream().anyMatch(product -> product.isMatchName(productName));
+    public boolean isExistProduct(String productName, int budget) {
+        return products.stream().anyMatch(product -> product.canBePurchase(productName, budget));
     }
 }
