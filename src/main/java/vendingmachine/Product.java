@@ -13,8 +13,8 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public boolean canBePurchase(String name) {
-        return isMatchName(name) && isExistQuantity();
+    public boolean canBePurchase(String name, int budget) {
+        return isMatchName(name) && isExistQuantity() && isLessThanBudget(budget);
     }
 
     private boolean isMatchName(String name) {
@@ -23,5 +23,9 @@ public class Product {
 
     private boolean isExistQuantity() {
         return quantity > ZERO;
+    }
+
+    private boolean isLessThanBudget(int budget) {
+        return price <= budget;
     }
 }
