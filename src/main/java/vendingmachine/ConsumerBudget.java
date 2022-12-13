@@ -18,4 +18,8 @@ public class ConsumerBudget {
     public void subtractBudget(int price) {
         budget -= price;
     }
+
+    public boolean isOverZero() {
+        return budget > ZERO;
+    }
 }
