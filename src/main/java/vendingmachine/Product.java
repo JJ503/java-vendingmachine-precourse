@@ -10,4 +10,8 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
+
+    public boolean isMatchName(String name) {
+        return this.name.equals(name);
+    }
 }
