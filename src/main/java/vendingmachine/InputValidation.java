@@ -1,11 +1,10 @@
 package vendingmachine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class InputValidation {
     private static final int UNIT_OF_MONEY = 10;
+    private static final int ZERO = 0;
     private static final String SEMICOLON = ";";
     private static final String COMMA = ",";
 
@@ -17,7 +16,7 @@ public class InputValidation {
         return amount;
     }
 
-    public List<List<String>> validateProducts(String checkProducts) {
+    public List<Map<String, Object>> validateProducts(String checkProducts) {
         isExistValue(checkProducts);
         return getProductsInformationList(checkProducts);
     }
@@ -44,9 +43,9 @@ public class InputValidation {
         }
     }
 
-    private List<List<String>> getProductsInformationList(String checkValue) {
+    private List<Map<String, Object>> getProductsInformationList(String checkValue) {
         List<String> products = Arrays.asList(checkValue.split(SEMICOLON));
-        List<List<String>> productsInforms = new ArrayList<>();
+        List<Map<String, Object>> productsInforms = new ArrayList<>();
 
         for (String product : products) {
             productsInforms.add(isThreeInformation(product));
@@ -55,13 +54,38 @@ public class InputValidation {
         return productsInforms;
     }
 
-    private List<String> isThreeInformation(String product) {
+    private Map<String, Object> isThreeInformation(String product) {
         List<String> productInforms = Arrays.asList(product.split(COMMA));
         if (productInforms.size() == 3) {
-            return productInforms;
+            return validateInformation(productInforms);
         }
 
         ExceptionMessage.IS_NOT_THREE_INFORMATION.throwException();
         return null;
+    }
+
+    private Map<String, Object> validateInformation(List<String> information) {
+        validateAmount(information.get(1));
+        validateQuantity(information.get(2));
+
+        return new HashMap<String, Object>() {{
+            put("name", information.get(0));
+            put("price", information.get(1));
+            put("quantity", information.get(2));
+        }};
+    }
+
+    private int validateQuantity(String checkQuantity) {
+        isExistValue(checkQuantity);
+        int quantity = getNumber(checkQuantity);
+        isOverZero(quantity);
+
+        return quantity;
+    }
+
+    private void isOverZero(int quantity) {
+        if (quantity <= ZERO) {
+            ExceptionMessage.IS_NOT_OVER_ZERO.throwException();
+        }
     }
 }
