@@ -9,4 +9,8 @@ public class Products {
     public void addProduct(Product newProduct) {
         products.add(newProduct);
     }
+
+    public boolean isExistProduct(String productName) {
+        return products.stream().anyMatch(product -> product.isMatchName(productName));
+    }
 }
