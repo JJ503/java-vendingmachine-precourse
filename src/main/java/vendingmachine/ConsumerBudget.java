@@ -3,7 +3,9 @@ package vendingmachine;
 import java.util.Collections;
 
 public class ConsumerBudget {
-    private final int budget;
+    private static final int ZERO = 0;
+
+    private int budget;
 
     ConsumerBudget(int budget) {
         this.budget = budget;
@@ -11,5 +13,9 @@ public class ConsumerBudget {
 
     public int getBudget() {
         return budget;
+    }
+
+    public void subtractBudget(int price) {
+        budget -= price;
     }
 }
