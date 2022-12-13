@@ -6,13 +6,20 @@ import java.util.Map;
 public class VendingMachineController {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
+    VendingMachine vendingMachine;
+    Products products;
+    ConsumerBudget consumerBudget;
 
     public void operateVendingMachine() {
-        VendingMachine vendingMachine = new VendingMachine(enterVendingMachineAmount());
+        setVendingMachine();
+    }
+
+    public void setVendingMachine() {
+        vendingMachine = new VendingMachine(enterVendingMachineAmount());
+        products = new Products();
         outputView.printVendingMachineCoins(vendingMachine.getVendingMachineCoins());
-        Products products = new Products();
-        enterProducts(enterVendingMachineProducts(), products);
-        new ConsumerBudget(enterConsumerAmount());
+        enterProducts(enterVendingMachineProducts());
+        consumerBudget = new ConsumerBudget(enterConsumerAmount());
     }
 
     private int enterVendingMachineAmount() {
@@ -23,7 +30,7 @@ public class VendingMachineController {
         return inputView.readVendingMachineProducts();
     }
 
-    private Products enterProducts(List<Map<String, Object>> productInforms, Products products) {
+    private void enterProducts(List<Map<String, Object>> productInforms) {
         for (Map<String, Object> product : productInforms) {
             products.addProduct(new Product(
                     (String) product.get("name"),
@@ -31,8 +38,6 @@ public class VendingMachineController {
                     (Integer) product.get("quantity")
             ));
         }
-
-        return products;
     }
 
     private int enterConsumerAmount() {
