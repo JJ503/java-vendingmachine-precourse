@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VendingMachine {
+    private static final int ZERO_AMOUNT = 0;
     private static final String COIN_MESSAGE_FORMAT= "%d원 - %d개\n";
     private final Map<Coin, Integer> vendingMachineCoins;
 
@@ -23,6 +24,7 @@ public class VendingMachine {
 
     private void amountToCoinList(int amount) {
         while (amount > 0) {
+            amount = isTenCoin(amount);
             amount = createRandomCoin(amount);
         }
     }
@@ -38,11 +40,20 @@ public class VendingMachine {
         return amount;
     }
 
+    private int isTenCoin(int amount) {
+        if (amount == Coin.COIN_10.getAmount()) {
+            vendingMachineCoins.put(Coin.COIN_10, vendingMachineCoins.get(Coin.COIN_10) + 1);
+            return ZERO_AMOUNT;
+        }
+
+        return amount;
+    }
+
     public String getVendingMachineCoins() {
         StringBuilder coinsMessage = new StringBuilder();
         for (Coin coin : vendingMachineCoins.keySet()) {
             coinsMessage.append(String.format(COIN_MESSAGE_FORMAT,
-                    coin.getAmount(),vendingMachineCoins.get(coin)));
+                    coin.getAmount(), vendingMachineCoins.get(coin)));
         }
 
         return coinsMessage.toString();
