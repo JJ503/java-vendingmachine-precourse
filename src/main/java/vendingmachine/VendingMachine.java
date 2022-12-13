@@ -1,7 +1,7 @@
 package vendingmachine;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class VendingMachine {
     private static final int ZERO_AMOUNT = 0;
@@ -13,8 +13,8 @@ public class VendingMachine {
         amountToCoinList(amount);
     }
 
-    private HashMap initVendingMachineCoins() {
-        return new HashMap(){{
+    private TreeMap initVendingMachineCoins() {
+        return new TreeMap(){{
             put(Coin.COIN_10, 0);
             put(Coin.COIN_50, 0);
             put(Coin.COIN_100, 0);
