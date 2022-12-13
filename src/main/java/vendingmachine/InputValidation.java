@@ -21,6 +21,11 @@ public class InputValidation {
         return getProductsInformationList(checkProducts);
     }
 
+    public String validateProductName(String checkProduct) {
+        isExistValue(checkProduct);
+        return checkProduct;
+    }
+
     private void isExistValue(String checkValue) {
         if (checkValue.isEmpty()) {
             ExceptionMessage.ENTER_NOTHING.throwException();
