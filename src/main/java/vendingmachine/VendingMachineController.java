@@ -12,6 +12,7 @@ public class VendingMachineController {
         outputView.printVendingMachineCoins(vendingMachine.getVendingMachineCoins());
         Products products = new Products();
         enterProducts(enterVendingMachineProducts(), products);
+        new ConsumerBudget(enterConsumerAmount());
     }
 
     private int enterVendingMachineAmount() {
@@ -32,5 +33,9 @@ public class VendingMachineController {
         }
 
         return products;
+    }
+
+    private int enterConsumerAmount() {
+        return inputView.readConsumerBudget();
     }
 }
