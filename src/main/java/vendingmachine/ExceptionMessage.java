@@ -7,7 +7,7 @@ public enum ExceptionMessage {
     IS_NOT_THREE_INFORMATION("상품 정보는 상품영, 가격, 수량을 입력해야 합니다.");
 
     private static final String ERROR_TAG = "[ERROR] ";
-    private String errorMessage;
+    private final String errorMessage;
 
     ExceptionMessage(String errorMessage) {
         this.errorMessage = ERROR_TAG + errorMessage;
