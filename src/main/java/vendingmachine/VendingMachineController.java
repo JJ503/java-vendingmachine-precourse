@@ -6,6 +6,7 @@ public class VendingMachineController {
 
     public void operateVendingMachine() {
         VendingMachine vendingMachine = new VendingMachine(enterVendingMachineAmount());
+        outputView.printVendingMachineCoins(vendingMachine.getVendingMachineCoins());
     }
 
     private int enterVendingMachineAmount() {
