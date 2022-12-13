@@ -3,6 +3,7 @@ package vendingmachine;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.List;
+import java.util.Map;
 
 public class InputView {
     private static final String INPUT_VENDING_MACHINE_AMOUNT = "자판기가 보유하고 있는 금액을 입력해 주세요.";
@@ -15,7 +16,7 @@ public class InputView {
         return inputValidation.validateAmount(Console.readLine());
     }
 
-    public List<List<String>> readVendingMachineProducts() {
+    public List<Map<String, Object>> readVendingMachineProducts() {
         System.out.println(INPUT_VENDING_MACHINE_PRODUCTS);
         return inputValidation.validateProducts(Console.readLine());
     }
